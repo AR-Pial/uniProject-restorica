@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Food Item</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="text-center m-5">
+      
+      <form class="d-flex justify-content-evenly" action="{% url 'manageFoodItem' %}" method="POST">
+       {% csrf_token %}
+         <input type="text" name="type" placeholder="Food Type">
+         <input type="text" name="name" placeholder="Food Name">
+         <input type="text" name="price" placeholder="Price">
+         <button type="submit" class="btn bg-primary text-white">ADD FOOD</button>
+      </form>
+    </div>
+     <table class="table">
+      
+         <tr>
+             <th>Food Type</th>
+             <th>Food Name</th>
+             <th>Price</th>
+             <th>Action</th>
+         </tr>
+         {% for i in item %}
+           <tr>
+               <td>{{i.food_type}}</td>
+               <td>{{i.food_name}}</td>
+               <td>{{i.food_price}}</td>
+               <td>
+                 <button>Update</button>
+                 <button>Delete</button>
+              </td>
+           </tr>
+         {% endfor %}
+     </table> 
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
